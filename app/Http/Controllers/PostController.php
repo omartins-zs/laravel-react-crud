@@ -32,7 +32,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'   => 'required|string|max:255',
+            'content' => 'required|string',
+            'picture' => 'nullable|image|max:2048', // Validate that picture is an image
+        ]);
+
+        $data = $request->only(['title', 'content']);
+
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            // Store the file in the "public/uploads" directory
+            $path = $file->storeAs('uploads', $filename, 'public');
+            $data['picture'] = '/storage/' . $path;
+        }
+
+        Post::create($data);
+
+        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
     /**
