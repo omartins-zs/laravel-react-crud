@@ -1,1 +1,21 @@
 https://www.youtube.com/watch?v=U-YHyb2k2TM&ab_channel=UnityCoding
+
+https://www.youtube.com/watch?v=mDhz6LhMlTk&ab_channel=UnityCoding
+
+laravel new laravel-react-crud
+
+react
+
+laravel
+
+0
+
+yes
+
+cd laravel-react-crud
+
+php artisan serve
+
+npm run dev
+
+php artisan migrate
