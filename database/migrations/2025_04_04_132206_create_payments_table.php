@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->string("email")->unique();
+            $table->decimal("amount", 10, 2);
+            $table->enum("status", ['pending', 'failed', 'success', 'processing']);
             $table->timestamps();
         });
     }
