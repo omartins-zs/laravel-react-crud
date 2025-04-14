@@ -17,7 +17,9 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'email' => $this->faker->unique()->safeEmail(),
+            'amount' => $this->faker->randomFloat(2, 10, 500),
+            'status' => $this->faker->randomElement(['pending', 'failed', 'success', 'processing']),
         ];
     }
 }
