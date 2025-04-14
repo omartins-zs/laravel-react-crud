@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
+
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -17,7 +18,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::resource('posts', PostController::class);
 
-Route::resource('payments', PaymentController::class);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/payments', [PaymentController::class, 'index']);
+    Route::delete('/payments/{id}', [PaymentController::class, 'destroy']);
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+    Route::post('/payments', [PaymentController::class, 'store']);
+    Route::put('/payments/{id}', [PaymentController::class, 'update']);
+});
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';
