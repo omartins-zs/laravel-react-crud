@@ -1,5 +1,4 @@
 import { IconCirclePlusFilled, IconMail, type Icon } from "@tabler/icons-react"
-
 import { Button } from "@/components/ui/button"
 import {
   SidebarGroup,
@@ -9,18 +8,21 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+interface NavItem {
+  title: string
+  url: string
+  icon?: Icon
+}
+
 export function NavMain({
   items,
 }: {
-  items: {
-    title: string
-    url: string
-    icon?: Icon
-  }[]
+  items: NavItem[]
 }) {
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
+        {/* Item "Quick Create" e botão de Inbox */}
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2">
             <SidebarMenuButton
@@ -40,12 +42,15 @@ export function NavMain({
             </Button>
           </SidebarMenuItem>
         </SidebarMenu>
+        {/* Mapeamento dos itens de navegação com links */}
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
+              <SidebarMenuButton asChild tooltip={item.title}>
+                <a href={item.url} className="flex items-center gap-2">
+                  {item.icon && <item.icon />}
+                  <span>{item.title}</span>
+                </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
