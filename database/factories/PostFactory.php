@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(),
-            'content' => $this->faker->paragraphs(3, true),
+            'content' => $this->faker->text(220),
             'picture' => $this->faker->optional(0.5)->imageUrl(640, 480, 'posts'),
         ];
     }
