@@ -19,7 +19,9 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-type ProfileForm = {
+// type ProfileForm = {
+
+interface ProfileForm {
     name: string;
     email: string;
 }
