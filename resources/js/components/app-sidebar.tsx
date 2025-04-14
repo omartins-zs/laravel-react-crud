@@ -2,10 +2,13 @@ import * as React from "react"
 import {
   IconCamera,
   IconChartBar,
+  IconCurrencyDollar,
   IconDashboard,
   IconDatabase,
+  IconEyeDollar,
   IconFileAi,
   IconFileDescription,
+  IconFileText,
   IconFileWord,
   IconFolder,
   IconHelp,
@@ -40,8 +43,19 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: IconDashboard,
+    //   icon: IconLayoutGridFilled,
+    },
+    {
+      title: "Posts",
+      url: "/posts",
+      icon: IconFileText,
+    },
+    {
+      title: "Payments",
+      url: "/payments",
+      icon: IconCurrencyDollar,
     },
     {
       title: "Lifecycle",
